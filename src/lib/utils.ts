@@ -11,3 +11,8 @@ export function isValidFormat(date: string) {
   const parsedDate = parse(date, DATE_FORMAT, new Date());
   return isValid(parsedDate);
 }
+
+export function getBaseDate(date?: string | null) {
+  if (date && isValidFormat(date)) return parse(date, DATE_FORMAT, new Date());
+  return new Date();
+}
