@@ -7,17 +7,17 @@ async function Home({ searchParams }: { searchParams: { date: string } }) {
   const data = await getPictureData(searchParams.date);
 
   return (
-    <main className='bg-muted py-10'>
+    <main className='bg-zinc-100 dark:bg-zinc-900 py-10'>
       <div className='max-w-screen-md mx-auto px-4 md:px-0 space-y-4'>
         <div className='relative aspect-video w-full overflow-hidden shadow-sm rounded-lg'>
           {data.media_type === 'image' ? 
             <Image
+              fetchPriority='high'
               src={data.url}
               alt={data.title}
+              fill
               quality={85}
-              layout="fill"
-              objectFit="cover"
-              className="transition-opacity duration-300 ease-in-out"
+              className="object-cover"
             /> : 
             <iframe 
               className='w-full h-full'
@@ -33,7 +33,7 @@ async function Home({ searchParams }: { searchParams: { date: string } }) {
             {data.copyright && <CardDescription>{data.copyright}</CardDescription>}
           </CardHeader>
           <CardContent>
-            <p className='prose w-full'>{data.explanation}</p>
+            <p className='prose dark:prose-invert w-full'>{data.explanation}</p>
           </CardContent>
         </Card>
       </div>
