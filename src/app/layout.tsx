@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import { cn } from '@/lib/utils';
+import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,7 +28,9 @@ function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <Suspense>
+            <Header />
+          </Suspense>
           {children}
           <Footer />
         </ThemeProvider>
