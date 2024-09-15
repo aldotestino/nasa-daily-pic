@@ -1,7 +1,6 @@
 import { NasaApodResponseBody } from '@/lib/types';
 import env from './env';
 import { isValidFormat } from '@/lib/utils';
-import { da } from 'date-fns/locale';
 import { redirect } from 'next/navigation';
 
 const NASA_API_URL = 'https://api.nasa.gov/planetary/apod';
